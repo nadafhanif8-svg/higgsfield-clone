@@ -293,16 +293,10 @@ body {
   font-weight: 600;
 }
 
-/* CTA */
-.cta-section {
-  padding: 120px 80px;
-  text-align: center;
-  background: radial-gradient(circle at center, rgba(168,85,247,0.15), transparent 60%);
-}
-
-.cta-section p {
-  margin: 20px 0 30px;
-  color: #cbd5f5;
+.cta:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+  transition: 0.3s;
 }
 
 /* FOOTER */
@@ -327,3 +321,4 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
