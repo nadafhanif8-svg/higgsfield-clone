@@ -327,3 +327,10 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+.cta:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+
