@@ -45,18 +45,3 @@ const revealOnScroll = () => {
     }
   });
 };
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
-import { createUserWithEmailAndPassword } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-createUserWithEmailAndPassword(auth, email, password)
-.then((userCredential) => {
-  console.log("User created:", userCredential.user);
-})
-.catch((error) => {
-  alert(error.message);
-});
-
