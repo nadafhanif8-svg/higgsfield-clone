@@ -2,7 +2,7 @@
 const card = document.querySelector(".card");
 const reveals = document.querySelectorAll(".reveal");
 
-// ===== 3D CARD MOUSE EFFECT =====
+// ===== 3D CARD EFFECT =====
 if (card) {
   document.addEventListener("mousemove", (e) => {
     const x = (window.innerWidth / 2 - e.clientX) / 25;
