@@ -1,6 +1,6 @@
 // ===== SELECT ELEMENTS =====
 const card = document.querySelector(".card");
-const reveals = document.querySelectorAll(".reveal");
+let reveals = document.querySelectorAll(".reveal");
 
 // ===== 3D CARD MOUSE EFFECT =====
 if (card) {
@@ -31,7 +31,7 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 /* Scroll Reveal Animation */
-const reveals = document.querySelectorAll(".reveal");
+let reveals = document.querySelectorAll(".reveal");
 
 const revealOnScroll = () => {
   const windowHeight = window.innerHeight;
@@ -45,3 +45,4 @@ const revealOnScroll = () => {
     }
   });
 };
+
