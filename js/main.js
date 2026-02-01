@@ -30,3 +30,22 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+/* Scroll Reveal Animation */
+const reveals = document.querySelectorAll(".reveal");
+
+const revealOnScroll = () => {
+  const windowHeight = window.innerHeight;
+  const revealPoint = 120;
+
+  reveals.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < windowHeight - revealPoint) {
+      section.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
