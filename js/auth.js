@@ -4,9 +4,10 @@ import {
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+// LOGIN
 window.login = function () {
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
 
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
@@ -16,11 +17,12 @@ window.login = function () {
     .catch(err => alert(err.message));
 };
 
+// SIGNUP
 window.signup = function () {
-  const email = document.getElementById("signupEmail").value;
-  const password = document.getElementById("signupPassword").value;
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("signup-password").value;
 
   createUserWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Account created"))
+    .then(() => alert("Account created successfully"))
     .catch(err => alert(err.message));
 };
