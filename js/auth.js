@@ -1,5 +1,5 @@
+// js/auth.js
 import { auth, db } from "./firebase.js";
-
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword
@@ -11,23 +11,7 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-
-// LOGIN
-window.login = async function () {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    alert(err.message);
-    console.error(err);
-  }
-};
-
-
-// SIGNUP 🔥 (THIS CREATES FIRESTORE USER)
+// SIGNUP
 window.signup = async function () {
   const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
@@ -38,15 +22,25 @@ window.signup = async function () {
 
     await setDoc(doc(db, "users", user.uid), {
       email: user.email,
+      plan: "free",
+      credits: 10,
       createdAt: serverTimestamp()
     });
 
-    console.log("🔥 Firestore user created:", user.uid);
-
     window.location.href = "dashboard.html";
-
-  } catch (error) {
-    alert(error.message);
-    console.error(error);
+  } catch (err) {
+    alert(err.message);
   }
+};
+
+// LOGIN
+window.login = function () {
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      window.location.href = "dashboard.html";
+    })
+    .catch(err => alert(err.message));
 };
