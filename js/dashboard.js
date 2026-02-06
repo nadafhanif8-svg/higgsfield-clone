@@ -1,20 +1,22 @@
-import { auth } from "./firebase.js";
-import {
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { auth, db } from "./firebase.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 🔒 Protect dashboard + show user info
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "index.html";
-  } else {
+    return;
+  }
+
+  const snap = await getDoc(doc(db, "users", user.uid));
+
+  if (snap.exists()) {
+    const data = snap.data();
     document.getElementById("userEmail").innerText =
-      `Logged in as: ${user.email}`;
+      `${data.email} | Plan: ${data.plan.toUpperCase()} | Credits: ${data.credits}`;
   }
 });
 
-// 🚪 Logout
 document.getElementById("logoutBtn").addEventListener("click", () => {
   signOut(auth).then(() => {
     window.location.href = "index.html";
